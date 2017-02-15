@@ -1,0 +1,453 @@
+// Angular Base Apps
+// by Base Apps
+// https: //github.com/base-apps/angular-base-apps
+// Licensed under MIT Open Source
+
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+@import
+"settings";
+// Libraries (let's make Normalize an external dependency eventually)
+@import
+"vendor/normalize";
+// Helpers
+@import
+"helpers/functions", "helpers/mixins", "helpers/breakpoints", "helpers/images", "helpers/icons", "helpers/loaders";
+// Global styles
+@import
+"global";
+// Components
+@import
+"components/action-sheet", "components/block-list", "components/button", "components/button-group", "components/card", "components/extras", "components/forms", "components/grid", "components/title-bar", "components/icon", "components/label", "components/list", "components/loader", "components/menu-bar", "components/modal", "components/motion", "components/notification", "components/off-canvas", "components/popup", "components/switch", "components/tabs", "components/accordion", "components/typography", "components/utilities";
+@import
+"pashion_components/accordion", "pashion_components/font_styles", "pashion_components/spinner", "pashion_components/calendar", "pashion_components/datepicker", "pashion_components/dots_menu", "pashion_components/image_zoom", "pashion_components/date_range_picker", "pashion_components/dialog", "pashion_components/forms", "pashion_components/card", "pashion_components/utilities", "pashion_components/add_files", "pashion_components/contacts", "pashion_components/messages", "pashion_components/select";
+
+.footer {
+}
+
+.comms {
+}
+
+#left-panel {
+  min-width: 280px;
+  max-width: 280px;
+}
+
+.right-panel {
+  min-width: 280px;
+  max-width: 280px;
+  // overflow: visible;
+}
+
+#looks {
+}
+
+.request {
+  border: 2px solid lightgrey;
+}
+
+.title-bar {
+  height: 36px;
+}
+
+.info-header {
+  background-color: white;
+  min-height: 5rem;
+  max-height: 4rem;
+  line-height: 7rem;
+}
+.info-header span {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.tool-header {
+  background-color: $white-two;
+  min-height: 3rem;
+  max-height: 3rem;
+  line-height: 3rem;
+}
+
+.tool-header span {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.tool-header-spacer {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow: hidden;
+}
+
+.expando {
+}
+
+.to-u-c {
+  text-transform: uppercase;
+}
+
+.indigital-and-align {
+  position: absolute;
+  bottom: 2px;
+  left: 2px; 
+  width: 91px !important;
+  height: auto;
+}
+
+.indigital-and-align-wide {
+  position: relative;
+  margin-top: -25px;
+  margin-left: 4px;
+  width: 182px !important;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 18px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 30px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  -webkit-border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.grid-block-vertical-shadow {
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.grid-block.grid-block-overflow-visible {
+  overflow: visible;
+}
+
+.alert-box {
+  min-width: 17px;
+  height: 17px;
+  border-radius: 3px;
+  background-color: $flat-blue;
+  font-size: $font-size-large;
+  font-weight: 700;
+  line-height: $font-size-large;
+  color: $white;
+  padding: 0.3rem 0.4rem 0 0.4rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.alert-box-small {
+  min-width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $flat-blue;
+  margin-top: 5px;
+  margin-left: 2px;
+}
+
+.avatar-circle {
+  width: 44px;
+  height: 44px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: $white-two;
+  font-size: 1.5rem; // $font-size-extra-large;
+  font-weight: 700;
+  line-height: $font-size-extra-large;
+  color: $warm-grey;
+  padding: 1.4rem 1rem 0 1rem;
+  //margin-left: 0.5rem;
+  //margin-top: 1rem;
+  margin-right: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.avatar-container {
+  //width:56px;
+}
+
+.avatar-text {
+  text-transform: uppercase;
+}
+
+.edit-box {
+  width: 17px;
+  height: 17px;
+  font-size: $font-size-extra-large;
+  line-height: 0.6;
+  color: $black;
+  margin-left: 1rem;
+  text-align: center;
+}
+
+.spa-v-spacer {
+  height: 7px;
+  overflow: visible;
+}
+
+.spa-h-spacer {
+  width: 7px;
+  overflow: visible;
+}
+
+.scrolling-lip {
+  height: 7px;
+  color: white;
+}
+
+.scrolling-fat-lip {
+  height: 18px;
+  color: white;
+}
+
+.spa-background {
+  background: $white-three;
+}
+
+.tool-header-greyed-out {
+  color: $pinkish-grey;
+}
+
+.tool-header-selected {
+  border-bottom: 1px solid $warm-grey;
+}
+
+select.top-menu-modifier {
+  background-color: $white-three;
+  border: none;
+  margin-top: 1.5rem;
+}
+
+select.top-menu-modifier:hover {
+  background-color: $white-three;
+  border: none;
+  margin-top: 1.5rem;
+}
+
+.request-image-fix {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  //min-height: 75px;
+  min-width: 125px;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  // border: 0.5px solid #ebebeb;
+  //RM can't get this to work
+  color: #ebebeb;
+  padding: 0;
+}
+
+.request-image-info-fix {
+  margin-top: 1rem;
+  min-height: 100px;
+  //RM Match number of rows of data 
+  overflow: hidden;
+}
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+  color: $black !important;
+}
+
+.login-background {
+  background-image: url('/assets/colored-background-2-faded.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu-divider {
+  border-bottom: 2px solid $white-three;
+}
+
+.align-top,
+.align-top td {
+  vertical-align: top;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.wrapper-inner-5 {
+  padding: 5px;
+}
+
+.text-circled {
+  color: $pinkish-grey;
+  border: 1px $pinkish-grey solid;
+  height: 40px;
+  width: 40px;
+  line-height: 44px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  font-size: 33px;
+  display: block;
+}
+
+.grid-block-row {
+  padding: 0;
+  margin: 1rem 1rem 1.5rem 1rem;
+}
+
+ai-dialog-body .grid-block-row {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.grid-block-row .ui-text-label-m-broad {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.slim-text-box-label + select + .slim-text-box-label,
+.slim-text-box-label + input + .slim-text-box-label {
+  width: auto;
+}
+
+.grid-block-row .inline-label > input,
+.grid-block-row .inline-label > select {
+  flex: none;
+}
+
+.grid-content-column {
+  padding: 0;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  display: block;
+}
+
+.grid-content-block {
+  padding: 0;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  display: block;
+  margin-right: 1rem;
+}
+
+.grid-row {
+  width: 100%;
+  display: flex;
+  margin: 2% 0 0 0;
+  height: 28px; 
+  min-height: 28px; 
+}
+
+.grid-row-col {
+  display: flex; 
+  flex: 1;
+  margin: 0 1rem 2rem 0;
+  height: 28px; 
+  min-height: 28px; 
+}
+
+.grid-row-col input {
+  margin: 0;
+}
+
+.grid-row .grid-row-col:first-child {
+  width: 26%;
+  margin-left: 1rem;
+}
+
+.grid-row .grid-row-col:last-child {
+  min-width: 22%;
+}
+
+.grid-row .inline-label {
+  margin: 0;
+  width: 100%;
+}
+
+.contact-box {
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.grid-row .datepickerfrom,
+.grid-row .datepickerto {
+  min-width: 100px;
+}
+.medium-up-1 .inline-label > .form-label,
+.grid-row-col .inline-label > .form-label {
+  align-items: flex-start; 
+}
+@media (max-width:1300px) {
+  .grid-row .grid-row-date-start {
+    max-width: 15rem;
+  }
+
+  .grid-row .grid-row-date-end {
+    max-width: 12rem;
+  }
+
+}
+
+
+
+filters-search,
+filters-available-from,
+filters-available-to,
+filters-color,
+filters-theme,
+filters-designer,
+filters-season,
+filters-type,
+filters-city {
+  width: 100%;
+}
+
+// IE 11 hack for wrong detection of page hiegh and grid
+//RM
+// Affect appearance of shadow on main page load 
+
+.IEVisibility {
+  // this is for non IE 
+  overflow: visible;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  // for IE
+   div#visNeeded {overflow:hidden;}
+   div#visNeeded2 {overflow:hidden;}
+   div#looks {max-height:85vh;}
+}
+.modal-table-wrap {overflow-x:hidden; max-height:10rem; margin-top: 10px; }
+.modal-table-wrap table {
+  margin-bottom:7px;
+}
+.guestpage-filters {
+  min-height: 100px; 
+  margin-top: 3rem; margin-bottom: 1rem; overflow:hidden;
+
+}
+.index-filters > div {
+  padding-bottom: 2%;
+}
+@media (max-width: $screen-medium) {
+  .indigital-and-align {
+    width: 60px !important;
+  }
+}

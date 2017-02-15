@@ -1,0 +1,168 @@
+server:
+   sessionTimeout: 3600
+---
+hibernate:
+    cache:
+        queries: true
+        use_second_level_cache: true
+        use_query_cache: true
+        region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+        cache.provider_class: org.hibernate.cache.EhCacheProvider
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    
+stormpath:
+    apiKey:
+        id: 3OTJGW2C2J572PYYPGTQVRL1A
+        secret: lOwKaNI3ClftnGl58MJLFLGbsCcuOL/EHNSjJg5MWss
+
+jasypt:
+    algorithm: PBEWITHSHA256AND256BITAES-CBC-BC
+    providerName: BC
+    password: Bkf227dkAet9HVztUhKS55f3SbBrey
+    keyObtentionIterations: 1000
+
+elasticSearch:
+    datastoreImpl: hibernateDatastore
+    client:
+        mode: local
+    index:
+        store:
+            type: simplefs
+grails:
+    plugin:
+        awssdk:
+            accessKey: AKIAIDWK6XYVRHVN6HUQ
+            secretKey: 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
+            region: eu-central-1
+environments:
+    development:
+        dataSource:
+            
+            url: jdbc:mysql://pashion-prod.cnjmlfc6tctw.eu-west-1.rds.amazonaws.com:3306/pashionprod
+            username: pashionprod
+            password: 2Mc9Nf17gBzyGs*a4$WS
+
+        grails:
+          plugin:
+            awssdk:
+              accessKey: AKIAIDWK6XYVRHVN6HUQ
+              secretKey: 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
+              region: eu-west-1
+    test:
+        dataSource:
+            dbCreate: update
+            url: 
+            username: 
+            password: 
+    production:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://pashion-prod.cnjmlfc6tctw.eu-west-1.rds.amazonaws.com:3306/pashionprod
+            username: pashionprod
+            password: 2Mc9Nf17gBzyGs*a4$WS
+        grails:
+            plugin:
+              awssdk:
+                accessKey: AKIAIDWK6XYVRHVN6HUQ
+                secretKey: 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
+                region: eu-west-1
+            # vpc: vpc-0b88176e
+            # security group: rds-launch-wizard-1 (sg-47b6f321)
+
+---
+---
+grails:
+    controllers:
+        upload:
+            maxFileSize: 2000000
+            maxRequestSize: 2000000
+    profile: web
+    codegen:
+        defaultPackage: pashion
+    spring:
+        transactionManagement:
+            proxies: false
+info:
+    app:
+        name: '@info.app.name@'
+        version: '@info.app.version@'
+        grailsVersion: '@info.app.grailsVersion@'
+spring:
+    groovy:
+        template:
+            check-template-location: false
+# Spring Actuator Endpoints are Disabled by Default
+endpoints:
+    enabled: false
+    jmx:
+        enabled: true
+
+---
+grails:
+    json:
+        legacy:
+            builder: false
+    servlet:
+        version: 3.0
+    resources:
+        pattern: '/**'
+    mime:
+        disable:
+            accept:
+                header:
+                    userAgents:
+                        - Gecko
+                        - WebKit
+                        - Presto
+                        - Trident
+        types:
+            all: '*/*'
+            atom: application/atom+xml
+            css: text/css
+            csv: text/csv
+            form: application/x-www-form-urlencoded
+            html:
+              - text/html
+              - application/xhtml+xml
+            js: text/javascript
+            json:
+              - application/json
+              - text/json
+            multipartForm: multipart/form-data
+            pdf: application/pdf
+            rss: application/rss+xml
+            text: text/plain
+            hal:
+              - application/hal+json
+              - application/hal+xml
+            xml:
+              - text/xml
+              - application/xml
+    urlmapping:
+        cache:
+            maxsize: 1000
+    controllers:
+        defaultScope: singleton
+    converters:
+        encoding: UTF-8
+        json:
+            default:
+                deep: false
+    views:
+        default:
+            codec: html
+        gsp:
+            encoding: UTF-8
+            htmlcodec: xml
+            codecs:
+                expression: html
+                scriptlets: html
+                taglib: none
+                staticparts: none
+endpoints:
+    jmx:
+        unique-names: true

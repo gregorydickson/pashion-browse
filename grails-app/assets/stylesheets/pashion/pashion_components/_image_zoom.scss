@@ -1,0 +1,39 @@
+ai-dialog.card-image-zoom {
+	min-width: 0; 
+}
+ai-dialog.card-image-zoom ai-dialog-body {
+	padding: 0;
+}
+ai-dialog.card-image-zoom  .tool-header {
+	padding-left: 5px;
+	padding-right: 32px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+ai-dialog.card-image-zoom .brand-font {
+	font-size: $font-size-medium;
+	font-weight: 500;
+
+}
+
+ai-dialog.card-image-zoom .season-font {
+	font-size: $font-size-small;
+	font-weight: 300;
+
+}
+
+.card-image-zoom-wrap img {
+	display: block; 	
+ }
+.card-image-zoom-wrap {
+	position: relative; 
+	display: table;
+	margin: 0 auto; 
+}
+.card-image-zoom-wrap .indigital-and-align {
+	position: absolute;
+	bottom: 5px;
+	left: 8px;
+}

@@ -1,0 +1,28 @@
+<template>
+ 
+    <div class="grid-block grid-block-overflow-visible" style="margin-bottom:1rem;">
+
+                <table class="width100" style="table-layout: fixed;">
+                    <tr>
+                        <td class="con-td-1">
+                                <div class="avatar-container">
+                                    <img if.bind="(currentContact.avatar)" src=${currentContact.avatar} class="clip-circle contact-entry" />
+                                    <div if.bind="(!currentContact.avatar)" class="avatar-circle avatar-text ">${currentContact.name.charAt(0)}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="con-td-2">
+                                <div>
+                                    <div class="ui-text-label-me-left paragraph-5 contact-box">${currentContact.name} ${currentContact.surname}</div>
+                                    <div class="ui-text-label-s-left paragraph-5 contact-box">${currentContact.brand.name}${currentContact.pressHouse.name}${currentContact.prAgency.name}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-3">
+                        </td>
+                        <td class="align-top con-td-4">
+                        </td>
+                    </tr>
+                </table>
+    </div>
+</template>

@@ -1,0 +1,32 @@
+<template>
+    <div class="vertical grid-block">
+        <div class="grid-block calendar-header-align"  >
+            <span class="calendarnav prev">
+              <a click.delegate="previous()"><img src="/assets/calendar/prev.png"  /></a>
+            </span>
+            <span class="calendarnav calendar-title"><a id="titlelink" click.delegate="activate()">TODAY</a></span>
+            <span class="calendarnav next">
+              <a click.delegate="next()"><img src="/assets/calendar/next.png" /></a>
+            </span>
+        </div>
+        <div class="grid-block calendar-header-align">
+            <span class="calendarnav ui-text-label-m-broad monthyear">${monthname}&emsp;${year}</span>
+        </div>
+        <div class="grid-block calendar-header-align">
+            <table class="calendar calendar-day-numbers">
+                <thead>
+                    <tr>
+                        <td repeat.for="cell of calendar.calendarMonths[0].dayNames[0]">${cell.dayString}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr repeat.for="row of calendar.calendarMonths[0].rows">
+                        <td class="${cell.event}" repeat.for="cell of row">${cell.dayString}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

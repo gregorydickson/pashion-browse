@@ -1,0 +1,48 @@
+<template>
+    <require from="./dashboard_filters/filters-mode"></require>
+<!--header.html-->
+        <div class="">
+            <ul class="menu-bar" style="background: #ebebeb">
+                <li style="display:flex; max-width:250px;">
+                    <!-- <img  src="/assets/lauren.png" style="margin-right: 1rem;"/> -->
+                    <!-- 
+                    <img if.bind="(user.image)" src=${user.image} class="clip-circle contact-entry" />
+                    <div if.bind="(!user.image)" style="margin-right: 1rem; margin-left:1rem; margin-top:1rem; text-transform: uppercase;" class="avatar-circle ">${user.name.charAt(0)}</div> -->
+
+                    <div class="avatar-container" style="margin-right: 1rem; margin-left:1rem; margin-top:0.5rem;">
+                        <div if.bind="(user.avatar)" class="avatar-img-cover" style="height: 45px;border-radius: 100%;overflow:hidden;background: url(${user.avatar});background-repeat: no-repeat;background-size: cover;background-position: center;display: block;width: 45px;"></div>
+                        <div if.bind="(!user.avatar)"  class="avatar-circle avatar-text ">${user.name.charAt(0)}</div>
+                    </div>
+
+
+
+                    <select value.bind="selectval" change.trigger="userActions()" name="NotUSed" id="headerModeSelect" class="nav-label-header top-menu-modifier" style="max-width:150px;">
+                        <option value="no">${user.name}</option>
+                        <option value= "logout">LOGOUT</option>
+                        <option value= "edit">EDIT PROFILE</option>
+                    </select> 
+
+                        <!-- filter mode 
+                        <span class="inline-label" style="width:150px; margin-bottom: 0px; margin-top:1.5rem;">
+                            <filters-mode change.delegate="filterMode($event)" style="width:150px;"></filters-mode> 
+                        </span> -->
+
+                </li>
+                    <li></li>
+                    <li></li>
+                    <li>
+                        <a href="http://www.pashiontool.com" target="_blank"><img src="/assets/PashionRMPlainBlack.png" style="max-width:131px; " /></a>
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li style="flex: none;">
+                        <select value.bind="selectval" change.trigger="admin()" id="headerAdminSelect" class="nav-label-header top-menu-modifier" style="max-width:200px; width:200px;margin-right:35px; ">
+                            <option>DASHBOARD</option>
+                            <option>ADMIN</option>
+                           <!--  <option>TREND ANALYSIS</option> -->
+                        </select>
+                    </li>
+                
+            </ul>
+        </div>
+</template>

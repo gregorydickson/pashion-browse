@@ -1,0 +1,15 @@
+import pashion.User
+
+log.info ""
+log.info "******   Rendering _connections.gson *************"
+
+
+model {  
+  List<User> userList
+}
+
+json tmpl.user(userList)
+
+log.info "****** Done Rendering Connections *************"
+log.info ""
+log.info ""

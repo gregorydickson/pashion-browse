@@ -1,0 +1,33 @@
+td.au-target.start-selected {
+	border: 2px solid $flat-blue;
+}
+
+td.au-target.end-selected {
+	border: 2px solid $flat-blue;
+}
+
+td.au-target.available {
+	background-color: white;
+}
+
+td.au-target.today {
+	background-color: $flat-blue;
+
+	> a {
+		color: white;
+	}
+}
+
+td.au-target.not-available {
+	background-color: white; 
+
+	> a {
+		color: $warm-grey;
+		font-weight: 300;
+		cursor:default;
+	}
+}
+
+td.au-target.partial-available {
+	background-color: $scarlet-45;
+}

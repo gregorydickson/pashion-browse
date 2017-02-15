@@ -1,0 +1,105 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
+        classpath "org.grails.plugins:hibernate5:6.0.4"
+        classpath "org.grails.plugins:views-gradle:1.1.4"
+        classpath 'com.agileorbit:schwartz:1.0.0'
+    }
+}
+
+version "0.1"
+group "pashion"
+
+apply plugin:"idea"
+apply plugin:"war"
+apply plugin:"org.grails.grails-web"
+apply plugin:"org.grails.plugins.views-json"
+apply plugin:"org.grails.grails-gsp"
+apply plugin:"asset-pipeline"
+
+ext {
+    grailsVersion = project.grailsVersion
+    gradleWrapperVersion = project.gradleWrapperVersion
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://dl.bintray.com/agorapulse/libs"}
+    maven { url "http://dl.bintray.com/karman/karman"}
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.grails:grails-bom:$grailsVersion"
+    }
+    applyMavenExclusions false
+}
+
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.grails:grails-core"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.grails:grails-dependencies"
+    compile "org.grails:grails-web-boot"
+    compile "org.grails.plugins:cache"
+    compile "org.grails.plugins:scaffolding"
+    compile "org.grails.plugins:hibernate5"
+    compile "org.hibernate:hibernate-core:5.1.2.Final"
+    compile "org.hibernate:hibernate-ehcache:5.1.2.Final"
+
+    profile "org.grails.profiles:web"
+
+    
+    runtime ('com.bertramlabs.plugins:asset-pipeline-grails:2.11.6'){
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    assets 'com.bertramlabs.plugins:sass-asset-pipeline:2.11.6'
+
+    
+    runtime 'mysql:mysql-connector-java:5.1.36'
+    
+    compile "org.grails.plugins:views-json:1.1.4"
+
+    compile "com.stormpath.sdk:stormpath-sdk-api:1.1.1"
+    runtime "com.stormpath.sdk:stormpath-sdk-httpclient:1.1.1"
+
+    compile 'org.grails.plugins:grails-cookie:2.0.3'
+
+    compile 'com.xlson.groovycsv:groovycsv:1.1'
+
+    compile "org.grails.plugins:jasypt-encryption:2.0.1"
+
+    compile 'com.agileorbit:schwartz:1.0.0'
+
+    compile 'com.pubnub:pubnub:3.7.10'
+
+    compile 'com.logentries:logentries-appender:1.1.36'
+
+    compile 'com.bertramlabs.plugins:selfie:1.1.1'
+    
+    compile 'org.grails.plugins:aws-sdk-s3:2.1.9'
+
+    compile 'com.bertramlabs.plugins:force-ssl:3.0.3'
+
+}
+war{
+    zip64 true
+}
+bootRun {
+    jvmArgs('-Dspring.output.ansi.enabled=always')
+}
+
+assets {
+    minifyJs = true
+    minifyCss = true
+    developmentRuntime = true
+}

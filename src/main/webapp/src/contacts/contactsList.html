@@ -1,0 +1,276 @@
+<template>
+    <require from="./sort"></require>
+    <require from="./filter"></require>
+    <div class="grid-block vertical shrink" style="width:100%; margin-top:1rem;">
+        <!-- Search contacts -->
+        <div class="grid-block shrink" style="margin-left:1rem; width:255px;">
+            <input type="search" value.two-way="searchTerm" class="search-box" id="search-contacts" placeholder="Search Contacts" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Contacts'">
+        </div>
+        <!-- -->
+        <!-- connection requests -->
+        <!-- -->
+        <div class="grid-block shrink" style="margin-left:1rem; margin-bottom:1rem;">
+            <table style="table-layout:fixed;" class="big-accordion">
+                <tr>
+                    <td class="accordion-grey" style="width:20px;">
+                        <button id="button1111" class="accordion " click.delegate="closeExpand(1111)"></button>
+                    </td>
+                    <td class="accordion-grey">
+                        <span>CONNECTION REQUESTS</span>
+                    </td>
+                    <td class="accordion-grey" style="width:35px; overflow: hidden;">
+                        <span class="accordion-grey"
+                        if.bind="(users[user.id -1].connections!=null)"
+                        repeat.for="connectionC of users[user.id -1].connections">
+
+                        <button click.delegate="closeExpand(1111)" class="accordionNew"
+                        if.bind="(connectionC.connectingStatus=='PendingIn' ||
+                                        connectionC.connectingStatus=='PendingOut')" style="color: white; font-weight: 500; background: #3971b1;">NEW&nbsp;</button>
+
+                        </span>                        
+                    </td>
+                    <td class="accordion-grey" style="width:15px;"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="panel1111" class="panel grid-block vertical " style="overflow-y:auto;">
+            <div id="contacts-inside-top2" if.bind="(users[user.id -1].connections!=null)" repeat.for="connectionC of users[user.id -1].connections" class="" style="width:255px; overflow: visible;margin-left: 1rem;">
+                <!-- in coming -->
+                <!-- RM check the user still exists -->
+                <div if.bind="(connectionC.connectingStatus=='PendingIn' && users[connectionC.connectedUserId -1].email)" style="">
+                    <span class="look-menu-heading paragraph-5" style="outline: 1px solid lightgray; width: 250px; background: white;">Incoming Request</span>
+                    <table class="width100" style="table-layout: fixed;">
+                        <tr>
+                            <td class="con-td-1">
+                                <div class="">
+                                    <img if.bind="(users[connectionC.connectedUserId -1].avatar)" src=${users[connectionC.connectedUserId-1].avatar} class="clip-circle contact-entry" />
+                                    <div if.bind="(!users[connectionC.connectedUserId -1].avatar)" style="" class="avatar-circle avatar-text "> ${users[connectionC.connectedUserId -1].name.charAt(0)}</div>
+                                </div>
+                            </td>
+                            <td class="con-td-2">
+                                <div class="ui-text-label-me-left paragraph-5 contact-box">${users[connectionC.connectedUserId -1].name} ${users[connectionC.connectedUserId -1].surname}</div>
+                                <!--     <div class="ui-text-label-s-left paragraph-5 contact-box">${connection.brand.name} ${connection.pressHouse.name}</div> -->
+                                <div class="ui-text-label-s-left paragraph-5 contact-box">${users[connectionC.connectedUserId -1].email}</div>
+                            </td>
+                            <td class="align-top con-td-3">
+                            </td>
+                            <td class="align-top con-td-4">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="grid-block align-center shrink">
+                        <!--  <a class="hollow button" click.delegate="declineContact(connectionC.user.id,connectionC.id) ">Decline</a> //RM no deny, just delete, more permissive -->
+                        <a class="hollow button" click.delegate="deleteConnection(user.id,connectionC.id) ">Decline</a>
+                        <a class="button" href="#" click.delegate="acceptContact(user.id,connectionC.id)">Accept</a>
+                    </div>
+                </div>
+                <!-- out going -->
+                <!-- RM check the user still exists -->
+                <div if.bind="(connectionC.connectingStatus=='PendingOut' && users[connectionC.connectedUserId -1].email)" style="">
+                    <span class="look-menu-heading paragraph-5" style="outline: 1px solid lightgray; width: 250px; background: white;">Outgoing Request</span>
+                    <table class="width100" style="table-layout: fixed;">
+                        <tr>
+                            <td class="con-td-1">
+                                <div class="">
+                                    <img if.bind="(users[connectionC.connectedUserId -1].avatar)" src=${users[connectionC.connectedUserId-1].avatar} class="clip-circle contact-entry" />
+                                    <div if.bind="(!users[connectionC.connectedUserId -1].avatar)" style="" class="avatar-circle avatar-text "> ${users[connectionC.connectedUserId -1].name.charAt(0)}</div>
+                                </div>
+                            </td>
+                            <td class="con-td-2">
+                                <div class="ui-text-label-me-left paragraph-5 contact-box">${users[connectionC.connectedUserId -1].name} ${users[connectionC.connectedUserId -1].surname}</div>
+                                <!--     <div class="ui-text-label-s-left paragraph-5 contact-box">${connection.brand.name} ${connection.pressHouse.name}</div> -->
+                                <div class="ui-text-label-s-left paragraph-5 contact-box">${users[connectionC.connectedUserId -1].email}</div>
+                            </td>                        
+                            <td class="align-top con-td-3">
+                            </td>
+                            <td class="align-top con-td-4">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="grid-block align-center shrink">
+                        <a class="hollow button" click.delegate="deleteConnection(user.id,connectionC.id) ">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!-- -->
+        <!-- Recent activity lists-->
+        <!-- -->
+        <div class="grid-block shrink" style="margin-left:1rem; margin-bottom:1rem;">
+            <table style="table-layout:fixed;" class="big-accordion">
+                <tr>
+                    <td class="accordion-grey" style="width:20px;">
+                        <button id="button1213" class="accordion active" click.delegate="closeExpand(1213)"></button>
+                    </td>
+                    <td class="accordion-grey"> <span>NEW MESSAGES</span>
+                    </td>
+                    <td class="accordion-grey" style="width:35px; overflow: hidden;">
+                        <span class="accordion-grey"
+                        if.bind="(users[user.id -1].connections!=null)"
+                        repeat.for="connectionC of users[user.id -1].connections">
+
+                        <button click.delegate="closeExpand(1213)" class="accordionNew"
+                        if.bind="((connectionC.numberNewMessages!=0) && (connectionC.connectingStatus=='Accepted'))" style="color: white; font-weight: 500; background: #3971b1;">NEW&nbsp;</button>
+
+                        </span>                        
+                    </td>
+                    <td class="accordion-grey" style="width:15px;"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="panel1213" class="panel grid-block vertical scroll show" style="overflow-y:auto;">
+            <!-- main list -->
+            <div id="contacts-inside-top" if.bind="(users[user.id -1].connections!=null)" repeat.for="connection of users[user.id -1].connections | filter:searchTerm:filterFunc:'null':'null' " class="" style="width:255px; overflow: visible;margin-left: 1rem;">
+                <!-- check the connection is completed and the user still exists -->
+                <table if.bind="(connection.connectingStatus=='Accepted' && users[connection.connectedUserId -1].email && connection.numberNewMessages!=0)" class="width100" style="margin-bottom: 10px; table-layout: fixed;">
+                    <tr>
+                        <td class="con-td-1">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <div class="">
+                                    <img if.bind="(users[connection.connectedUserId -1].avatar)" src=${users[connection.connectedUserId-1].avatar} class="clip-circle contact-entry" />
+                                    <div if.bind="(!users[connection.connectedUserId -1].avatar)" style="" class="avatar-circle avatar-text">${users[connection.connectedUserId -1].name.charAt(0)}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="con-td-2">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <div>
+                                    <div class="ui-text-label-me-left paragraph-5 contact-box">${users[connection.connectedUserId -1].name} ${users[connection.connectedUserId -1].surname}</div>
+                                    <div class="ui-text-label-s-left paragraph-5 contact-box">${users[connection.connectedUserId -1].brand.name}${users[connection.connectedUserId -1].pressHouse.name}${users[connection.connectedUserId -1].prAgency.name}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-3">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <span class="alert-box">${connection.numberNewMessages}</span>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-4">
+                            <div class="look-menu-absolute-wrap">
+                                <a href="#" click.delegate="deleteContact(connection.user.id,connection.id, users[connection.connectedUserId -1].email)">
+                                    <span class="edit-box" style="font-size: 20px; margin-left: 11px; margin-right: 0px; margin-top: 6px; height:16px;width:16px;">
+                                    <img style="vertical-align: center;" src="../../assets/ximg.png"  /> 
+                                    </span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- -->
+        <!-- Contact lists-->
+        <!-- -->
+        <div class="grid-block shrink" style="margin-left:1rem; margin-bottom:1rem;">
+            <table style="table-layout:fixed;" class="big-accordion">
+                <tr>
+                    <td class="accordion-grey" style="width:20px;">
+                        <button id="button1212" class="accordion active" click.delegate="closeExpand(1212)"></button>
+                    </td>
+                    <td class="accordion-grey"> <span>ALL CONTACTS</span>
+                    </td>
+                    <td class="accordion-grey" style="width: 49px; padding-top: 1px;">
+                        <button id="button1221" class="accordionAZ active" click.delegate="switchAlpha(1221)"></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="panel1212" class="panel grid-block vertical scroll show" style="overflow-y:auto;">
+            <!-- ME -->
+            <div id="contacts-inside-top-me" style="width:255px; overflow: visible;margin-left: 1rem; margin-bottom:1.5rem; border-bottom: 1px solid #e7e7e7; padding-bottom: 9px;">
+                <table class="width100" style="table-layout: fixed;">
+                    <tr>
+                        <td class="con-td-1">
+                            <a href="#" click.delegate="updatePhoto()">
+                                <div class="avatar-container">
+                                    <div if.bind="(user.avatar)" class="avatar-img-cover" style="height: 45px;border-radius: 100%;overflow:hidden;background: url(${user.avatar});background-repeat: no-repeat;background-size: cover;background-position: center;display: block;width: 45px;"></div>
+                                    <div if.bind="(!user.avatar)" class="avatar-circle avatar-text ">${users[user.id -1].name.charAt(0)}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="con-td-2">
+                            <a href="#" click.delegate="updatePhoto()">
+                                <div>
+                                    <div class="ui-text-label-me-left paragraph-5 contact-box">${users[user.id -1].name} ${users[user.id -1].surname} (ME)</div>
+                                    <div class="ui-text-label-s-left paragraph-5 contact-box">${users[user.id -1].brand.name}${users[user.id -1].pressHouse.name}${users[user.id -1].prAgency.name}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-3">
+                        </td>
+                        <td class="align-top con-td-4">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- main list -->
+            <div id="contacts-inside-top" if.bind="(users[user.id -1].connections!=null)" repeat.for="connection of users[user.id -1].connections | sort: 'name': filterDirection | filter:searchTerm:filterFunc " class="" style="width:255px; overflow: visible;margin-left: 1rem;">
+                <!-- check the connection is completed and the user still exists -->
+                <table if.bind="(connection.connectingStatus=='Accepted' && users[connection.connectedUserId -1].email)" class="width100" style="margin-bottom: 10px; table-layout: fixed;" >
+                    <tr>
+                        <td class="con-td-1">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <div class="">
+                                    <img if.bind="(users[connection.connectedUserId -1].avatar)" src=${users[connection.connectedUserId-1].avatar} class="clip-circle contact-entry" />
+                                    <div if.bind="(!users[connection.connectedUserId -1].avatar)" class="avatar-circle avatar-text">${users[connection.connectedUserId -1].name.charAt(0)}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="con-td-2">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <div>
+                                    <div class="ui-text-label-me-left paragraph-5 contact-box">${users[connection.connectedUserId -1].name} ${users[connection.connectedUserId -1].surname}</div>
+                                    <div class="ui-text-label-s-left paragraph-5 contact-box">${users[connection.connectedUserId -1].brand.name}${users[connection.connectedUserId -1].pressHouse.name}${users[connection.connectedUserId -1].prAgency.name}</div>
+                                </div>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-3">
+                            <a href="#" click.delegate="initiateMessage(connection.connectedUserId)">
+                                <span if.bind="connection.numberNewMessages!=0" class="alert-box">${connection.numberNewMessages}</span>
+                            </a>
+                        </td>
+                        <td class="align-top con-td-4">
+                            <div class="look-menu-absolute-wrap">
+
+                                <a href="#" click.delegate="deleteContact(connection.user.id,connection.id, users[connection.connectedUserId -1].email)">
+                                    <span class="edit-box" style="font-size: 20px; margin-left: 11px; margin-right: 0px; margin-top: 6px; height:16px;width:16px;">
+
+                                    <img style="vertical-align: center;" src="../../assets/ximg.png"  /> 
+
+
+                                    </span>
+                                </a>
+                                <!-- edit contact modal popup 
+                                <div id="${connection.connectedUserId}" class="look-menu-absolute lookEditContactClass" style="margin-bottom:5px;">
+                                    <span class="look-menu-heading">${users[connection.connectedUserId -1].name}</span>
+                                    <ul class="look-menu-list">
+                                        <li if.bind="(userLoop.id !=user.id)" class="look-menu-item">
+                                            <a href="#" click.delegate="initiateMessage(connectedUserId) " class="look-menu-link">Send Message</a>
+                                        </li>
+                                        <li if.bind="(userLoop.id !=user.id)" class="look-menu-item">
+                                            <a href="#" click.delegate="deleteContact(connectedUserId,connection.id) " class="look-menu-link">Delete Contact</a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- category Testing 
+        <div class="grid-block shrink" style="margin-left:1rem; margin-bottom:1rem;">
+            <table class="big-accordion ">
+                <tr>
+                    <td class="accordion-grey" style="width:20px;">
+                        <button id="button1313" class="accordion active" click.delegate="fetchGetUserFromServer()"></button>
+                    </td>
+                    <td class="accordion-grey"> <span>Testing</span>
+                    </td>
+                </tr>
+            </table>
+        </div> -->
+    </div>
+</template>

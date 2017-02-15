@@ -1,0 +1,11 @@
+import pashion.SampleRequest
+ 
+model {  
+  Iterable<SampleRequest> sampleRequestList
+}
+
+
+log.info "rendering json list"
+
+
+json g.render(template: 'sampleRequest', collection: sampleRequestList ?: [], var: 'sampleRequest')
