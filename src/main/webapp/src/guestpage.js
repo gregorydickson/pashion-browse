@@ -27,7 +27,7 @@ export class Guestpage {
   nagMultiplier = 2;
   nagMaxTimeout = 480000;
   nagVisted = false;
-  hardWireSeason = 25; //"Fall /Winter 2017"
+  hardWireSeason = "25"; //"Fall /Winter 2017"
   
   
 
@@ -166,23 +166,43 @@ export class Guestpage {
   activate() {
         return Promise.all([
             this.http.fetch('/dashboard/seasons').then(response => response.json()).then(seasons => {
-              this.seasons = seasons;
+              // this.seasons = seasons;
+              this.seasons = this.sortSeasons (seasons);
               
-            }),
-
-
-this.user = this.userService.getUser().then(user => {
-                this.user = user;})
+            })
 
             ]);
       }
 
+  sortSeasons (array) {
+    return array
+        .slice(0)
+        .sort(function (a, b) {return a["order"] - b["order"] * -1 });
+  } 
+
 
   attached(){
-    //this.filterChangeBrand();
     // fake event to show 'current season'
+    // this fires a change as soon as possible
     this.filterChangeSeason({detail: {value:this.hardWireSeason}});
+    //Do it via direct manipultion of the select2 component 
 
+    //while ($('#seasonSelect')[0].childElementCount < 3) {
+    // console.log("Seasons select [0].childElementCount" + $('#seasonSelect')[0].childElementCount );
+    //}
+    // $(document).ready(function () {
+    // $('#seasonSelect')[0].selectedIndex = 7; 
+
+     //this updates the display of select2 (does fire search again, but who cares)
+     var parent = this; 
+     setTimeout(function(){
+        $('#seasonSelect').val(parent.hardWireSeason);
+        $('#seasonSelect').trigger('change');
+      },6000);
+    //    });
+    //RM can't work out how to detect when the select2 control has loaded successfully & data is populated, 
+    // so do two stage process
+  
     var parent = this;
     $('input[type=search]').on('search', function () {
     // search logic here
