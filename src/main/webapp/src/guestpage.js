@@ -167,18 +167,14 @@ export class Guestpage {
         return Promise.all([
             this.http.fetch('/dashboard/seasons').then(response => response.json()).then(seasons => {
               // this.seasons = seasons;
-              this.seasons = this.sortSeasons (seasons);
+              this.seasons = seasons;
               
             })
 
-            ]);
+            ]); 
       }
 
-  sortSeasons (array) {
-    return array
-        .slice(0)
-        .sort(function (a, b) {return a["order"] - b["order"] * -1 });
-  } 
+
 
 
   attached(){
