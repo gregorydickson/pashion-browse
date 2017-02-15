@@ -1,14 +1,13 @@
-import {UserService} from './services/userService';
 import {inject} from 'aurelia-framework';
 
 
-@inject(UserService)
+
 export class App {
 
 	user = {};
 
-	constructor(userService) {
-	    this.userService = userService;
+	constructor() {
+	    
 
 	  }
 
@@ -16,24 +15,15 @@ export class App {
     this.router = router;
     config.title = 'PASHION';
     config.map([
-     // { route: ['', '/'],       name: 'index',       moduleId: 'index' },
-      { route: ['', '/'],       name: 'guestpage',       moduleId: 'guestpage' },
-      {	route: 'requestman',	name: 'requestman',  moduleId: 'requestman'},
-      {	route: 'guestpage',	name: 'guestpage',  moduleId: 'guestpage'},
-      {	route: 'adminpage',	name: 'adminpage',  moduleId: 'adminpage'}
+
+      { route: ['', '/'],       name: 'guestpage',       moduleId: 'guestpage' }
       
     ]);
   }
 
     activate() {
 	    
-	    return Promise.all([
-	      this.user = this.userService.getUser().then(user => {
-	        this.user = user;
-	        
-	      })
-
-	    ]);
+	   
 	  }
   
 }
