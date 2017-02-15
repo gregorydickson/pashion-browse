@@ -1,9 +1,0 @@
-import pashion.User
-
-
-model {  
-    User user
-}
-//log.info "Rendering a User in _user.gson"
-
-json g.render(user,[expand:['connections','pressHouse','brand','prAgency']])

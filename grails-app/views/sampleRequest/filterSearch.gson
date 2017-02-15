@@ -1,9 +1,0 @@
-import pashion.SampleRequest
-
-model {  
-  Iterable<SampleRequest> sampleRequestList
-}
-
-json {  
-  g.render(template: 'sampleRequest', collection: sampleRequestList ?: [], var: 'sampleRequest')
-}
