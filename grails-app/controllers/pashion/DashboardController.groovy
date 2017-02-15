@@ -2,9 +2,9 @@ package pashion
 
 import grails.converters.JSON
 import java.util.concurrent.ThreadLocalRandom
-import com.bertramlabs.plugins.SSLRequired
 
-@SSLRequired
+
+
 class DashboardController {
     static scope = "session"
 

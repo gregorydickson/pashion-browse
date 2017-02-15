@@ -3,14 +3,12 @@ package pashion
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.JSON
-import com.bertramlabs.plugins.SSLRequired
 
 import com.stormpath.sdk.account.Account
 import javax.servlet.http.HttpServletResponse
 
 
 @Transactional(readOnly = true)
-@SSLRequired
 class UserController {
 
     def userService

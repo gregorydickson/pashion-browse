@@ -87,7 +87,6 @@ dependencies {
     
     compile 'org.grails.plugins:aws-sdk-s3:2.1.9'
 
-    compile 'com.bertramlabs.plugins:force-ssl:3.0.3'
 
 }
 war{
