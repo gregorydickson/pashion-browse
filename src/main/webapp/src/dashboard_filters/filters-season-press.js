@@ -25,7 +25,7 @@ setSeason(event){
     var iarray = array.slice(0)
         .sort(
           function (a, b) {
-          console.log (a["order"] + " " + b["order"] + " " + (a["order"] - b["order"] ));
+          //console.log (a["order"] + " " + b["order"] + " " + (a["order"] - b["order"] ));
           return (a["order"] - b["order"]) * -1  }
           );
     return iarray;
