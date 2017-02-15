@@ -1,12 +1,9 @@
 package pashion
 
-import com.stormpath.sdk.account.Account
 
-import com.bloomhealthco.jasypt.*
 
 
 class User {
-	Account account
 	String password
 	Address address
 	String title
@@ -49,10 +46,10 @@ class User {
         prAgency lazy:false
         
     }
-   	static transients = ['account','password']
+   	static transients = ['password']
 	static constraints = {
 		email nullable: true
-		account nullable: true
+
 		address nullable: true
 		title nullable: true
 		phone nullable: true

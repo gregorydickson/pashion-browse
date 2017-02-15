@@ -4,7 +4,6 @@ import {inject} from 'aurelia-framework';
 
 export class App {
 
-	user = {};
 
 	constructor() {
 	    
@@ -12,18 +11,16 @@ export class App {
 	  }
 
 	configureRouter(config, router) {
-    this.router = router;
-    config.title = 'PASHION';
-    config.map([
+	    this.router = router;
+	    config.title = 'PASHION';
+	    config.map([
 
-      { route: ['', '/'],       name: 'guestpage',       moduleId: 'guestpage' }
-      
-    ]);
-  }
+	      { route: ['', '/'],       name: 'guestpage',       moduleId: 'guestpage' }
+	      
+	    ]);
+  	}
 
     activate() {
-	    
-	   
-	  }
+	    }
   
 }
