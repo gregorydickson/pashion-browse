@@ -78,7 +78,6 @@ dependencies {
 
     compile "org.grails.plugins:jasypt-encryption:2.0.1"
 
-    compile 'com.agileorbit:schwartz:1.0.0'
 
     compile 'com.pubnub:pubnub:3.7.10'
 
