@@ -129,53 +129,6 @@ class SampleRequest {
 					   searchableItemsProposed:SearchableItem,
 					   searchableItemsDenied:SearchableItem ]
 
-	PashionCalendar checkMonthForEvents(LocalDate localDate,
-										PashionCalendar pashionCalendar){
-		
-		LocalDate start = bookingStartDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-		LocalDate end = bookingEndDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-		log.info "Sample Request - check month for events"
-		if(pashionCalendar.calendarMonths[0].sameMonth(start)
-		   && pashionCalendar.calendarMonths[0].sameMonth(end)) {
-		   	log.info "check month for events - same month"
-			pashionCalendar = inSameMonth(pashionCalendar, start, end)
-		} else if (pashionCalendar.calendarMonths[0].sameMonth(start)){
-			pashionCalendar = startInSameMonth(pashionCalendar,start)
-		} else if(pashionCalendar.calendarMonths[0].sameMonth(end)){
-			pashionCalendar = endInSameMonth(pashionCalendar, end)
-		}
-		pashionCalendar
-	}
-
-	PashionCalendar inSameMonth(PashionCalendar pashionCalendar, LocalDate start,
-									LocalDate end){
-		log.info "Sample Request - In Same Month"
-		IntRange range = start.getDayOfMonth()..end.getDayOfMonth()
-		range.each{
-			pashionCalendar.calendarMonths[0].days[it].event = 
-					pashionCalendar.calendarMonths[0].days[it].event + " not-available"
-		}
-		pashionCalendar
-
-	}
-
-	PashionCalendar startInSameMonth(PashionCalendar pashionCalendar, LocalDate start){
-		IntRange range = start.getDayOfMonth()..pashionCalendar.calendarMonths[0].numberOfDays
-		range.each{
-			pashionCalendar.calendarMonths[0].days[it].event = 
-						pashionCalendar.calendarMonths[0].days[it].event + " not-available"
-		}
-		pashionCalendar
-	}
-
-	PashionCalendar endInSameMonth(PashionCalendar pashionCalendar, LocalDate end){
-		IntRange range = 1..end.getDayOfMonth()
-		range.each{
-			pashionCalendar.calendarMonths[0].days[it].event = 
-						pashionCalendar.calendarMonths[0].days[it].event + " not-available"
-		}
-		pashionCalendar
-	}
   	
 
 	
