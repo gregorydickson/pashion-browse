@@ -2,10 +2,9 @@ import {customElement, bindable, inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import 'fetch';
 import {BrandService} from 'services/brandService';
-import {Index} from 'index';
 
 
-@inject(HttpClient, Element, BrandService, Index)
+@inject(HttpClient, Element, BrandService)
 @customElement('filters-designer')
 
 export class FiltersDesignerCustomElement {
@@ -13,11 +12,11 @@ export class FiltersDesignerCustomElement {
   
   @bindable brando = '';  
 
-  constructor(http,element, brandService,index){
+  constructor(http,element, brandService){
     this.http = http;
     this.element = element;
     this.brandService = brandService;
-    this.index = index;
+    //this.index = index;
   }
   
   setBrand(event){
