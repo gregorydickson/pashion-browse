@@ -360,6 +360,8 @@ System.config({
       "common/formSelect.html!github:systemjs/plugin-text@0.0.8.js",
       "common/formSelect.js",
       "common/jquery.unveil.js",
+      "common/legalText.html!github:systemjs/plugin-text@0.0.8.js",
+      "common/legalText.js",
       "common/seasonAbbreviationFormatter.js",
       "common/viewDateFormatter.js",
       "common/viewDateFullFormatter.js",
@@ -439,6 +441,13 @@ System.config({
       "jquery",
       "select2"
     ],
+    "common/legalText.js": [
+      "aurelia-dialog",
+      "aurelia-fetch-client",
+      "fetch",
+      "aurelia-framework",
+      "common/dateFormat"
+    ],
     "common/viewDateFormatter.js": [
       "moment"
     ],
@@ -491,6 +500,11 @@ System.config({
       "fetch",
       "aurelia-framework",
       "common/dateFormat"
+    ],
+    "footer.js": [
+      "aurelia-dialog",
+      "aurelia-framework",
+      "./common/legalText"
     ],
     "guestpage.js": [
       "aurelia-framework",
