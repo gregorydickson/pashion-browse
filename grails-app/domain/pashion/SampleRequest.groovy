@@ -22,29 +22,35 @@ class SampleRequest {
 	Brand brand
 
 	PressHouse pressHouse
+	String prAgency
+	String requestingUserCompany
 	Address addressDestination
 	Address returnToAddress
 
 	String courierOut
+	Boolean courierOutNotification = false
 	String courierReturn
+	Boolean courierReturnNotification = false
 	String paymentOut
 	String paymentReturn
 	User receivingUser 
 	User requestingUser 
 	User deliverTo
+	String emailNotification
 	
 	String returnBy
 	String requiredBy
 
 	String overview
-	
-	String pickupId
-	Date pickupDate
-	String pickupDestination
 
-	String editorialName
-	String editorialWho
-	Date editorialWhen
+	String message
+	
+	
+	// Pickup Date is the Date for the courier pickup
+	Date pickupDate
+	Date pickupDateReturn
+	String pickupTime
+	String pickupTimeReturn
 
 	//auto fields
 	Date dateCreated
@@ -60,44 +66,7 @@ class SampleRequest {
 
 	static constraints = {
 		
-		season nullable:true
-		image nullable: true
-		look nullable:true
-		searchableItems nullable:true
-		searchableItemsProposed nullable: true
-		idString nullable: true
-		dateRequested nullable: true
-
-		bookingStartDate nullable: true
-	    bookingEndDate nullable: true
-		requestStatusBrand nullable: true 
-		requestStatusPress nullable: true
-		userCreatedId nullable: true
-		brand nullable:true
-		returnToAddress nullable: true
-		addressDestination nullable:true
-		deliverTo nullable:true
-
-		pressHouse nullable: true
-		courierOut nullable: true
-		courierReturn nullable: true
-		receivingUser nullable:true
-		requestingUser nullable: true 
-
-		overview nullable:true
-
-		pickupId nullable: true
-		pickupDate nullable: true
-	 	pickupDestination nullable: true
-
-		editorialName nullable: true 
-		editorialWho nullable: true 
-		editorialWhen nullable: true 
-
-		shippingOut nullable: true 
-		shippingReturn nullable: true
-
-		searchableItemsStatus nullable:true
+		message maxSize: 4000
 		
 	}
 
@@ -129,7 +98,7 @@ class SampleRequest {
 					   searchableItemsProposed:SearchableItem,
 					   searchableItemsDenied:SearchableItem ]
 
-  	
+	
 
 	
 }
