@@ -6,7 +6,7 @@ class Brand {
 	String name
 	String logo
 
-	String stormpathDirectory 
+	//String stormpathDirectory 
 
 	//auto fields
 	Date dateCreated
@@ -31,7 +31,7 @@ class Brand {
 		destinations nullable: true
 		name nullable: true 
 		logo nullable: true
-		stormpathDirectory nullable: true
+		//stormpathDirectory nullable: true
 		brandCollections nullable:true
 		prAgencies nullable:true
 		users nullable:true

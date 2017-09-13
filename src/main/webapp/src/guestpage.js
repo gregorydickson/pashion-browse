@@ -27,7 +27,7 @@ export class Guestpage {
   nagMultiplier = 2;
   nagMaxTimeout = 480000;
   nagVisted = false;
-  hardWireSeason = "25"; //"Fall /Winter 2017"
+  hardWireSeason = "28"; //SS18
   
   
 

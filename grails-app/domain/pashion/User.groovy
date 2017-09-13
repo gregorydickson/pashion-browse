@@ -12,7 +12,7 @@ class User {
 	String surname
 	String email
 	Boolean isInPashionNetwork = false
-	String stormpathString
+	//String stormpathString
 	String avatar
 
 	City city
@@ -59,7 +59,7 @@ class User {
 		city nullable: true
 		image nullable: true
 
-		stormpathString nullable:true, maxSize: 1000
+		//stormpathString nullable:true, maxSize: 1000
 		userCreatedId nullable: true
 		lastModifiedDate nullable: true
 		lastModifiedUserId nullable: true
