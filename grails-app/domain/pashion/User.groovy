@@ -48,6 +48,9 @@ class User {
 
    	static transients = ['password']
 	static constraints = {
+
+
+		password nullable:true, maxSize: 2000
 		email nullable: true
 
 		address nullable: true
@@ -73,11 +76,8 @@ class User {
 		sampleRequestsReceived nullable: true
 		connections nullable: true
 		permissions nullable: true
+}
 
-
-	static constraints = {
-		password nullable:true, maxSize: 2000
-	}
 
 	String toString(){
 		return title+ " "+name + " "+ surname + " " + phone

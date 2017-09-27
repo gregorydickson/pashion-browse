@@ -29,7 +29,7 @@ class Brand {
     }
 
 	static constraints = {
-<<<<<<< HEAD
+
 		destinations nullable: true
 		name nullable: true 
 		logo nullable: true
@@ -38,9 +38,7 @@ class Brand {
 		prAgencies nullable:true
 		users nullable:true
 		addresses nullable:true
-=======
-		
->>>>>>> origin/master
+
 	}
 
 	String toString() {
