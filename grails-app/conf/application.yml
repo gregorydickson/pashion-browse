@@ -31,6 +31,13 @@ elasticSearch:
 environments:
     development:
         dataSource:
+			# To change to develop with the production database , 
+			# use the following lines and comment out the rest of the block
+			#url: jdbc:mysql://pashion-prod.cnjmlfc6tctw.eu-west-1.rds.amazonaws.com:3306/pashionprod
+            #username: pashionprod
+            #password: 2Mc9Nf17gBzyGs*a4$WS
+			
+			
             dbCreate: validate
             url: jdbc:mysql://localhost:3306/pashion-web-local
             username: root
