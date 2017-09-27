@@ -54,8 +54,6 @@ class SearchableItemController {
         
         List results = criteria.list() {
 
-            
-            fetchMode 'brandCollection', FM.JOIN
 
                 isNotNull('image')
                 eq('isPrivate',false)

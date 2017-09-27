@@ -49,6 +49,7 @@ export class Guestpage {
     this.http.fetch('/searchableItem/browseSearch?searchtext='+ encodeURI(this.searchText) + 
                                       '&brand=' + this.selectedBrand + 
                                       '&season=' + encodeURI(this.selectedSeason) + 
+                                      '&category=' + this.selectedCategory + 
                                       '&theme='+ this.selectedTheme +
                                       '&maxR=' + this.maxR)
           .then(response => response.json())
@@ -95,6 +96,7 @@ export class Guestpage {
     this.http.fetch('/searchableItem/browseSearch?searchtext='+ encodeURI(this.searchText) + 
                                       '&brand=' + this.selectedBrand + 
                                      '&season=' + encodeURI(this.selectedSeason) + 
+                                    '&category=' + this.selectedCategory + 
                                      // '&season=' + this.selectedSeason + 
                                       '&theme='+ this.selectedTheme + 
                                       '&maxR=' + this.maxR)
@@ -132,6 +134,7 @@ export class Guestpage {
     this.http.fetch('/searchableItem/browseSearch?searchtext='+ encodeURI(this.searchText) + 
                                       '&brand=' + this.selectedBrand + 
                                      '&season=' + encodeURI(this.selectedSeason) + 
+                                     '&category=' + this.selectedCategory + 
                                      // '&season=' + this.selectedSeason + 
                                       '&theme='+ this.selectedTheme +
                                       '&maxR=' + this.maxR)

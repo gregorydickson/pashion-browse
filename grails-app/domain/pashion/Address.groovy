@@ -3,6 +3,7 @@ package pashion
 
 
 class Address{
+	String company
 	String name
 	String address1
 	String address2
@@ -10,15 +11,20 @@ class Address{
 	String country
 	String postalCode
 	String attention
+	String contactPhone
+	String stuartId
+	String comment
 	Boolean defaultAddress = false
 	Boolean archived = false
 
 	PressHouse pressHouse
 	PRAgency prAgency
+	PRAgency prDestination
 	Brand brand
 	Brand destination
 
 	static constraints = {
+		company nullable:true
 		brand nullable: true 
 		destination nullable:true
 		pressHouse nullable:true
@@ -29,6 +35,9 @@ class Address{
 		country nullable: true
 		postalCode nullable: true
 		attention nullable:true
+		contactPhone nullable:true
+		stuartId nullable:true
+		comment nullable:true
 	}
 
 	static mapping = {

@@ -2,8 +2,8 @@ package pashion
 
 
 
-
 class User {
+
 	String password
 	Address address
 	String title
@@ -12,7 +12,7 @@ class User {
 	String surname
 	String email
 	Boolean isInPashionNetwork = false
-	//String stormpathString
+
 	String avatar
 
 	City city
@@ -40,12 +40,12 @@ class User {
 
    	static mapping = {
         cache true
-        //stormpathString type: GormEncryptedStringType
         pressHouse lazy:false
         brand lazy:false
         prAgency lazy:false
         
     }
+
    	static transients = ['password']
 	static constraints = {
 		email nullable: true
@@ -74,6 +74,9 @@ class User {
 		connections nullable: true
 		permissions nullable: true
 
+
+	static constraints = {
+		password nullable:true, maxSize: 2000
 	}
 
 	String toString(){

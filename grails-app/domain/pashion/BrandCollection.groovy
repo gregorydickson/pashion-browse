@@ -13,8 +13,8 @@ class BrandCollection {
 	Long userCreatedId
 	Long lastModifiedUserId
 
-	// Season: e.g. "Fall 2016 Ready-to-Wear”, “Spring 2017 Couture",
-	//  "Winter 2017 Menswear"
+	// Season: e.g. "Fall 2016”, “Spring 2017",
+	//  "Winter 2017"
 	Season season
 	Category category
 	
@@ -30,6 +30,7 @@ class BrandCollection {
 
 	static mapping = {
 		season index: 'season_idx'
+		category defaultValue: 0
 		cache true
 		
 	}
@@ -45,6 +46,7 @@ class BrandCollection {
 		lastModifiedUserId nullable: true
 		userCreatedId nullable:true
 		season nullable: true
+		category nullable: true
 		
 		
 		permissions nullable: true 
