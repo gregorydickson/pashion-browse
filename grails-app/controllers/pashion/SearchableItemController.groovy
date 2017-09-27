@@ -21,7 +21,7 @@ class SearchableItemController {
         SimpleDateFormat dateFormat =  new SimpleDateFormat(dateFormatString)
         
         Brand brand = null
-
+        Category category = null
         Season season = null
         def keywords = null
         def theme = null
@@ -35,6 +35,9 @@ class SearchableItemController {
         
         if(params.season != "")
             season = Season.findByName(URLDecoder.decode(params.season))
+
+        if (params.category && params.category != "" && params.category != null)
+            category = Category.findById(params.category)
         
         if(params.searchtext != null && params.searchtext != "" && params.searchtext != "undefined"){
             keywords = URLDecoder.decode(params.searchtext)
@@ -44,11 +47,15 @@ class SearchableItemController {
         log.info "Brand:"+brand
         log.info "keywords:"+keywords
         log.info "season:"+season
+        log.info "category:"+category
         log.info "theme:"+theme
 
         def criteria = SearchableItem.createCriteria()
         
         List results = criteria.list() {
+
+            
+            fetchMode 'brandCollection', FM.JOIN
 
                 isNotNull('image')
                 eq('isPrivate',false)
@@ -58,6 +65,9 @@ class SearchableItemController {
                     keywords.each {  ilike('attributes', "%${it}%") }
                 }
                 if(season) eq('season',season)
+                if(category) brandCollection {
+                    eq('category',category)
+                }
                 maxResults(maxRInt)
                 cache true
             } 

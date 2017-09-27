@@ -16,6 +16,7 @@ class BrandCollection {
 	// Season: e.g. "Fall 2016 Ready-to-Wear”, “Spring 2017 Couture",
 	//  "Winter 2017 Menswear"
 	Season season
+	Category category
 	
 
 	//auto fields

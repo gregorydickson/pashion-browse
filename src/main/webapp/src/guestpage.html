@@ -1,6 +1,7 @@
 <!-- guestpage.html -->
 <template>
     <require from="./dashboard_filters/filters-designer"></require>
+    <require from="./dashboard_filters/filters-category"></require>
     <require from="./dashboard_filters/filters-season-press"></require>
     <require from="./dashboard_filters/filters-theme"></require>
     <require from="./common/jquery.unveil"></require>
@@ -59,6 +60,10 @@
                     <!-- Seasons -->
                     <div class="grid-content shrink" style="min-width: 225px; max-height: 50px;">
                         <filters-season-press change.delegate="filterChangeSeason($event)" ></filters-season-press>
+                    </div>
+                    <!-- Category -->
+                    <div class="grid-content shrink" style="min-width: 225px; max-height: 50px;">
+                        <filters-category change.delegate="filterChangeCategory($event)"></filters-category>
                     </div>
 
                     <!-- Theme -->

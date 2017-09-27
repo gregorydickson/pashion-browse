@@ -17,6 +17,7 @@ export class Guestpage {
   
   selectedBrand = 'All';
   selectedSeason = '';
+  selectedCategory = '';
   selectedTheme = '';
   searchText = '';
   maxR = 250;
@@ -148,6 +149,44 @@ export class Guestpage {
          .then (result => $('div.cards-list-wrap').animate({scrollTop: $('div.cards-list-wrap').offset().top - 250}, 'slow')) // scroll to top
           ;
   }
+
+
+      filterChangeCategory(event){
+        this.busy.on();
+        console.log("Filter Change changing Category");
+        this.selectedCategory = '';
+        if (event)
+            if (event.detail)
+                if (event.detail.value) {
+                    if (event.detail.value == "All") this.selectedCategory = '';
+                    else if (event.detail.value == "Select") this.selectedCategory = '';
+                    else this.selectedCategory = event.detail.value;
+                }
+        //console.log("Filter change called, Season: " + this.selectedSeason);
+        this.results = 0;
+        this.http.fetch('/searchableItem/browseSearch?searchtext='+ encodeURI(this.searchText) + 
+            '&brand=' + this.selectedBrand +
+            '&season=' + encodeURI(this.selectedSeason) +
+            '&category=' + this.selectedCategory +  
+            '&theme=' + this.selectedTheme +
+            '&maxR=' + this.maxR)
+            .then(response => response.json())
+            .then(rows => {
+                if (rows.session == 'invalid') {
+                    window.location.href = '/user/login';
+                    return;
+                }
+                this.rows = rows;
+                this.busy.off();
+                if (rows.length > 0) {
+                    this.results = (rows.length -1) * rows[0].numberImagesThisRow;
+                    this.results += rows[rows.length-1].numberImagesThisRow;
+                } 
+            })
+             .then (anything => setTimeout (function () {$("img.lazy").unveil();}, 1000)) // initial unveil of first images on load
+            .then (result => $('div.cards-list-wrap').animate({scrollTop: $('div.cards-list-wrap').offset().top - 250}, 'slow')) // scroll to top
+          ;
+    }
 
 
   constructor(http,dialogService,busy, userService) {
